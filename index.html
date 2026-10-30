@@ -178,6 +178,33 @@
     .contact-panel .pill{background:#1d485c;border-color:#1d485c;color:#fff}
     .footer{color:#697981}.footer .brand{color:#173341}
     @media(max-width:540px){.nav{background:rgba(251,251,248,.97)}.hero{min-height:80svh}}
+    /* Sculpted surfaces and softer transitions, informed by the reference. */
+    :root{--radius:28px}
+    .nav{top:18px;width:min(1240px,calc(100% - 36px));height:72px;padding:0 28px;border:1px solid #e0e5e4;border-radius:25px;background:rgba(255,255,253,.88);box-shadow:0 12px 44px #28485816}
+    .nav-cta{border-radius:999px;padding:12px 22px}
+    .mobile-menu{top:104px;border-radius:22px}
+    .hero{min-height:94svh;overflow:hidden;background:linear-gradient(145deg,#fafaf7 0%,#f5f7f5 65%,#e8f0f0 100%)}
+    .hero:before{content:"";position:absolute;right:-12vw;top:15%;height:min(60vw,760px);width:min(60vw,760px);border-radius:50%;z-index:-1;border:1px solid #7da0a825;background:radial-gradient(circle at 34% 32%,#eff7f7 0%,#dce9e9 52%,#c7dbdc 80%,#edf3f3 100%);box-shadow:0 0 0 70px #d9e8e817,0 0 0 140px #c6d9da12;transform:rotate(-18deg)}
+    .hero h1{max-width:990px;position:relative;z-index:1}
+    .hero-copy{position:relative;z-index:1}
+    .pill{border-radius:999px;padding-inline:26px}
+    .services-grid{background:transparent;border:0;gap:22px}
+    .service{border:1px solid #dce3e4;border-radius:30px;box-shadow:0 22px 55px #1d4b5510;min-height:370px}
+    .service:hover{box-shadow:0 28px 65px #1d4b551c;transform:translateY(-3px)}
+    .service-icon:before{border-radius:50%}
+    .work-section{border-radius:44px 44px 0 0;position:relative;z-index:1}
+    .project{border-radius:28px;box-shadow:0 20px 55px #18364010}
+    .project-art{border-radius:27px 27px 0 0}
+    .packages-section{border-radius:44px 44px 0 0;overflow:visible}
+    .package-card,.package-card.featured{border-radius:26px;box-shadow:0 18px 50px #15384812}
+    .package-card .pill{border-radius:999px}
+    .package-sticky{overflow:hidden}
+    .process{border-radius:44px 44px 0 0}
+    .contact-panel{border-radius:36px;background:linear-gradient(125deg,#e5eff0,#cbdfe2);min-height:450px}
+    .contact-panel:before{display:block;right:-170px;top:-190px;width:520px;height:520px;border-color:#34677a22;box-shadow:0 0 0 70px #ffffff22,0 0 0 140px #ffffff16}
+    .contact-panel .pill{border-radius:999px}
+    @media(max-width:900px){.nav{top:12px;width:calc(100% - 24px);padding:0 20px}.hero:before{width:82vw;height:82vw;top:17%;right:-36vw;opacity:.7}.work-section,.packages-section,.process{border-radius:32px 32px 0 0}}
+    @media(max-width:540px){.nav{height:66px;border-radius:20px}.hero{min-height:90svh}.hero:before{top:10%;right:-65vw;width:110vw;height:110vw;opacity:.65}.service{border-radius:24px}.project{border-radius:23px}.package-card,.package-card.featured{border-radius:22px}.contact-panel{border-radius:28px;min-height:0}.contact-panel:before{width:320px;height:320px;right:-180px;top:-140px}}
   </style>
 </head>
 <body>
