@@ -27,6 +27,41 @@
     .contact-section{padding:135px 0 35px}.contact-panel{position:relative;background:var(--accent);color:#0b1717;border-radius:35px;padding:clamp(35px,7vw,100px);overflow:hidden}.contact-panel:before{content:"";position:absolute;width:390px;height:390px;border:1px solid #273d2d50;border-radius:50%;right:-120px;top:-170px;box-shadow:0 0 0 60px #0b17170a,0 0 0 120px #0b171706}.contact-panel .eyebrow{color:#36552f}.contact-panel h2{max-width:900px;margin:26px 0;font-size:clamp(53px,7vw,100px)}.contact-panel p{font-size:18px;max-width:580px;color:#3e5041}.contact-panel .pill{background:#101b20;border-color:#101b20;color:white;margin-top:15px}.footer{display:flex;justify-content:space-between;align-items:center;padding:45px 0;color:#83929f;font-size:12px}.footer .brand{color:#eff6ed}.footer small{display:block;font-size:11px;letter-spacing:.12em;margin-top:12px}
     [data-reveal]{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}[data-reveal].visible{opacity:1;transform:translateY(0)}.hero h1 span{display:inline-block;animation:riser .9s both}.hero h1 span:nth-child(2){animation-delay:.15s}.hero h1 span:nth-child(3){animation-delay:.3s}@keyframes riser{from{opacity:0;transform:translateY(70px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}@keyframes breathe{from{transform:scale(.9) translate(-1%,0)}to{transform:scale(1.17) translate(3%,4%)}}@keyframes marquee{to{transform:translateX(-50%)}}@keyframes scrollline{0%,100%{opacity:.3;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
     @media(max-width:900px){.wrap{width:min(100% - 36px,1280px)}.nav-links{display:none}.menu-toggle{display:block}.mobile-menu{display:none;position:fixed;z-index:99;top:93px;left:16px;right:16px;padding:25px;background:#17212d;border:1px solid #3b4956;border-radius:20px;flex-direction:column;gap:22px;font-weight:700}.mobile-menu.open{display:flex}.hero-copy{align-items:start;flex-direction:column}.intro{grid-template-columns:1fr;gap:20px}.intro-right{grid-column:auto}.services-grid{grid-template-columns:1fr}.work-heading{align-items:start;flex-direction:column}.projects{grid-template-columns:1fr}.package-scroll{height:auto}.package-sticky{height:auto;position:relative;padding-bottom:65px}.package-viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.package-track{transform:none!important;padding:10px 18px 25px}.package-card{scroll-snap-align:center;width:min(83vw,380px)}.package-progress{display:none}.package-head,.package-note{width:calc(100% - 36px)}.process-head,.faq-wrap{grid-template-columns:1fr}.step{grid-template-columns:50px 1fr;gap:16px}.step p{grid-column:2}.footer{gap:25px;flex-wrap:wrap}}@media(max-width:540px){.nav{height:65px;padding:0 17px}.nav-cta{padding:9px 14px;font-size:11px}.hero{padding:140px 0 95px;min-height:100svh}.hero h1{font-size:clamp(61px,14vw,82px)}.hero-copy p{font-size:16px}.scroll-indicator{bottom:20px}.section{padding:95px 0}.service{padding:30px;min-height:310px}.service h3{margin-top:65px}.project-art{min-height:300px}.project-art .big{font-size:57px}.packages-intro{padding:100px 0 40px}.package-head p{display:none}.contact-section{padding-top:80px}.contact-panel{border-radius:25px}.contact-panel h2{font-size:52px}.footer{align-items:start;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important} [data-reveal]{opacity:1;transform:none}.package-track{transform:none!important}.package-scroll{height:auto}.package-sticky{position:relative;height:auto}.package-viewport{overflow-x:auto}.progress{display:none}}
+    /* The card sequence behaves like a pinned horizontal filmstrip.
+       Downward page motion moves the cards right, then normal scrolling resumes. */
+    .package-track{flex-direction:row-reverse}
+    .package-scroll{height:220vh}
+    .package-sticky{position:sticky;top:0;height:100svh;min-height:620px;padding-bottom:0}
+    .package-viewport{overflow:hidden;scroll-snap-type:none}
+    .package-track{transform:translate3d(var(--shift,0px),0,0)!important}
+    .package-progress{display:block}
+    .package-head p{display:block}
+    @media(max-width:900px){
+      .package-scroll{height:220vh}
+      .package-sticky{position:sticky;top:0;height:100svh;min-height:0;padding-bottom:0}
+      .package-viewport{overflow:hidden;scroll-snap-type:none;overscroll-behavior:contain}
+      .package-track{padding:10px 5vw 25px;transform:translate3d(var(--shift,0px),0,0)!important}
+      .package-progress{display:block}
+      .package-head p{font-size:10px}
+      .package-note{font-size:11px;line-height:1.4}
+    }
+    @media(max-width:540px){
+      .package-sticky{justify-content:center}
+      .package-head{margin-bottom:9px}
+      .package-head p{display:none}
+      .package-card{min-height:425px;max-height:65svh;padding:23px}
+      .package-card h3{font-size:34px;margin:14px 0 5px}
+      .package-card ul{margin:15px 0 18px;line-height:1.85}
+      .package-note{margin-top:0}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .package-scroll{height:auto!important}
+      .package-sticky{position:relative;height:auto;min-height:0}
+      .package-viewport{overflow-x:auto;scroll-snap-type:x mandatory}
+      .package-track{transform:none!important}
+      .package-card{scroll-snap-align:center}
+      .package-progress{display:none}
+    }
   </style>
 </head>
 <body>
@@ -64,24 +99,41 @@
       } else revealItems.forEach(el => el.classList.add('visible'));
       const scrollSection = document.querySelector('#package-scroll'), track = document.querySelector('#package-track'), progressBar = document.querySelector('.package-progress');
       let ticking = false;
+      let horizontalDistance = 0;
+      function sizeHorizontalScene() {
+        // One vertical pixel corresponds approximately to one horizontal pixel.
+        // The sticky viewport releases exactly when the complete rail is traversed.
+        if (reduceMotion.matches) {
+          scrollSection.style.height = 'auto';
+          horizontalDistance = 0;
+          track.style.setProperty('--shift', '0px');
+          return;
+        }
+        const oldShift = track.style.getPropertyValue('--shift');
+        track.style.setProperty('--shift', '0px');
+        horizontalDistance = Math.max(0,track.scrollWidth-window.innerWidth);
+        scrollSection.style.height = (window.innerHeight + Math.max(horizontalDistance, 1)) + 'px';
+        track.style.setProperty('--shift', oldShift || '0px');
+      }
       function update() {
         ticking = false;
         const pageMax = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
         document.documentElement.style.setProperty('--progress', (window.scrollY/pageMax).toFixed(4));
-        if (window.innerWidth <= 900 || reduceMotion.matches) { track.style.setProperty('--shift','0px'); return; }
+        if (reduceMotion.matches) { track.style.setProperty('--shift','0px'); return; }
         const rect = scrollSection.getBoundingClientRect();
         const travel = Math.max(1,scrollSection.offsetHeight-window.innerHeight);
         const p = Math.max(0,Math.min(1,-rect.top/travel));
-        const overflow = Math.max(0,track.scrollWidth-window.innerWidth);
-        const leftPadding = window.innerWidth * .05;
-        // Move the row from left to right as the visitor scrolls downward.
-        track.style.setProperty('--shift',(-overflow + p*overflow + leftPadding).toFixed(1)+'px');
+        // The first visible card is Launch. The rail then moves all the way
+        // right through Growth, Pro, and the ad packages before unpinning.
+        track.style.setProperty('--shift',(-horizontalDistance + p*horizontalDistance).toFixed(1)+'px');
         progressBar.style.setProperty('--package-progress',(p*100).toFixed(1)+'%');
       }
       function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
       window.addEventListener('scroll',requestUpdate,{passive:true});
-      window.addEventListener('resize',requestUpdate,{passive:true});
-      reduceMotion.addEventListener?.('change',requestUpdate);
+      window.addEventListener('resize',()=>{sizeHorizontalScene();requestUpdate();},{passive:true});
+      reduceMotion.addEventListener?.('change',()=>{sizeHorizontalScene();requestUpdate();});
+      window.addEventListener('load',()=>{sizeHorizontalScene();update();},{once:true});
+      sizeHorizontalScene();
       update();
     })();
   </script>
