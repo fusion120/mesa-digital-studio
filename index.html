@@ -205,6 +205,23 @@
     .contact-panel .pill{border-radius:999px}
     @media(max-width:900px){.nav{top:12px;width:calc(100% - 24px);padding:0 20px}.hero:before{width:82vw;height:82vw;top:17%;right:-36vw;opacity:.7}.work-section,.packages-section,.process{border-radius:32px 32px 0 0}}
     @media(max-width:540px){.nav{height:66px;border-radius:20px}.hero{min-height:90svh}.hero:before{top:10%;right:-65vw;width:110vw;height:110vw;opacity:.65}.service{border-radius:24px}.project{border-radius:23px}.package-card,.package-card.featured{border-radius:22px}.contact-panel{border-radius:28px;min-height:0}.contact-panel:before{width:320px;height:320px;right:-180px;top:-140px}}
+    .inquiry-dialog{border:0;padding:0;border-radius:26px;width:min(560px,calc(100% - 28px));max-height:min(90svh,900px);background:#fff;color:#223843;box-shadow:0 25px 110px #09222b50;overflow:auto}
+    .inquiry-dialog::backdrop{background:rgba(15,33,43,.63);backdrop-filter:blur(5px)}
+    .inquiry-inner{padding:clamp(24px,5vw,44px)}
+    .inquiry-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:18px}
+    .inquiry-close{width:38px;height:38px;border-radius:50%;background:#eef3f3;border:0;color:#274959;cursor:pointer;font-size:23px;line-height:1}
+    .inquiry-dialog h2{font-size:clamp(28px,5vw,42px);letter-spacing:-.055em;line-height:1.12;margin-bottom:12px}
+    .inquiry-dialog p{color:#5b6c73;font-size:14px;line-height:1.55}
+    .inquiry-form{display:grid;gap:16px;margin-top:24px}
+    .inquiry-form label{display:grid;gap:7px;font-size:13px;color:#324c57;font-weight:700}
+    .inquiry-form input,.inquiry-form select,.inquiry-form textarea{font:inherit;font-size:15px;color:#233944;width:100%;padding:13px 15px;border-radius:12px;border:1px solid #beced1;background:#f9fbfa;outline:none}
+    .inquiry-form input:focus,.inquiry-form select:focus,.inquiry-form textarea:focus{border-color:#316c86;box-shadow:0 0 0 3px #316c861c}
+    .inquiry-form textarea{min-height:120px;resize:vertical}
+    .inquiry-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+    .inquiry-actions button{cursor:pointer}
+    .inquiry-actions .pill{justify-content:center}
+    .inquiry-status{min-height:20px;margin:0;font-size:13px!important;color:#315b69!important}
+    body:has(.inquiry-dialog[open]){overflow:hidden}
   </style>
 </head>
 <body>
@@ -228,6 +245,21 @@
     <section class="section wrap"><div class="faq-wrap"><div data-reveal><div class="eyebrow">05 / Good to know</div><h2>Questions?<br>Answered.</h2></div><div class="faq" data-reveal><details><summary>What do I need to get started?</summary><p>A short description of your business, preferred colors, logo if you have one, photos, services, and the contact or booking link you'd like customers to use.</p></details><details><summary>Do I own my website?</summary><p>Yes. Your agreed website deliverables and business content are yours. Hosting, domain registration, and any third-party services should remain in accounts you control.</p></details><details><summary>Does the ad package include money spent on ads?</summary><p>No. Our fees cover creative work and any specifically listed setup services. Your media budget is separate and paid directly through your own advertising account.</p></details><details><summary>How long will a project take?</summary><p>Delivery depends on the package, requested functionality, and how quickly content and feedback arrive. We'll agree on a realistic timeline before work begins.</p></details><details><summary>Can you guarantee more customers?</summary><p>No agency can honestly guarantee a specific number of customers from a website or ad. We focus on strong design, clear messaging, and sound setup within the agreed scope.</p></details></div></div></section>
     <section class="contact-section wrap" id="contact"><div class="contact-panel" data-reveal><div class="eyebrow">06 / Let's build something</div><h2>Tell us what you’re building.</h2><p>Whether you need a first website, a redesign, or help getting the word out, we’d like to hear about it.</p><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=Let's%20build%20with%20MESA">Start your project</a></div><footer class="footer"><div><div class="brand">MESA<span style="color:var(--accent)">.</span></div><small>MODERN EXPERIENCES, SITES & ADVERTISING</small></div><div>Independent digital studio · Katy, Texas<br>© 2026 MESA Digital Studio</div><a href="mailto:mohamed.webdevelop@gmail.com">mohamed.webdevelop@gmail.com</a></footer></section>
   </main>
+  <dialog class="inquiry-dialog" id="inquiry-dialog" aria-labelledby="inquiry-title">
+    <div class="inquiry-inner">
+      <div class="inquiry-top"><div class="eyebrow">MESA / New inquiry</div><button type="button" class="inquiry-close" aria-label="Close inquiry form">×</button></div>
+      <h2 id="inquiry-title">Tell us about your project.</h2>
+      <p>Share a few details and we’ll prepare your message to MESA. You’ll review and send it from your own email app.</p>
+      <form class="inquiry-form" id="inquiry-form">
+        <label>Your name<input name="name" type="text" autocomplete="name" placeholder="Your name" required maxlength="100"></label>
+        <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@business.com" required maxlength="160"></label>
+        <label>What are you interested in?<select name="package" required><option value="General project inquiry">Not sure yet</option><option value="Launch website — $299">Launch website — $299</option><option value="Growth website — $549">Growth website — $549</option><option value="Pro website — $899">Pro website — $899</option><option value="Essentials ads — $99">Essentials ads — $99</option><option value="Launch Ads — $249">Launch Ads — $249</option><option value="Stay Visible — $299/month">Stay Visible — $299/month</option></select></label>
+        <label>About your business or project<textarea name="details" required maxlength="3000" placeholder="What does your business do, and what do you need help with?"></textarea></label>
+        <div class="inquiry-actions"><button type="submit" class="pill">Continue in email</button><button type="button" class="pill ghost" id="copy-inquiry">Copy message</button></div>
+        <p class="inquiry-status" role="status" aria-live="polite" id="inquiry-status"></p>
+      </form>
+    </div>
+  </dialog>
   <script>
     (() => {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -235,6 +267,30 @@
       const mobileMenu = document.querySelector('.mobile-menu');
       menuButton.addEventListener('click', () => { const open = mobileMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)); });
       mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuButton.setAttribute('aria-expanded','false'); }));
+      const inquiryDialog=document.querySelector('#inquiry-dialog');
+      const inquiryForm=document.querySelector('#inquiry-form');
+      const inquiryStatus=document.querySelector('#inquiry-status');
+      const inquirySelect=inquiryForm.elements['package'];
+      const packages={Launch:'Launch website — $299',Growth:'Growth website — $549',Pro:'Pro website — $899',Essentials:'Essentials ads — $99','Launch Ads':'Launch Ads — $249','Stay Visible':'Stay Visible — $299/month'};
+      function openInquiry(which=''){
+        inquirySelect.value=packages[which]||'General project inquiry';
+        inquiryStatus.textContent='';
+        inquiryDialog.showModal();
+        inquiryForm.elements['name'].focus();
+      }
+      document.querySelectorAll('.package-card a[href^="mailto:"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openInquiry(a.closest('.package-card').querySelector('h3').textContent.trim());}));
+      document.querySelectorAll('.nav-cta,.contact-panel .pill').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openInquiry();}));
+      inquiryDialog.querySelector('.inquiry-close').addEventListener('click',()=>inquiryDialog.close());
+      inquiryDialog.addEventListener('click',e=>{if(e.target===inquiryDialog)inquiryDialog.close();});
+      function prepareInquiry(){
+        if(!inquiryForm.reportValidity())return null;
+        const f=new FormData(inquiryForm);
+        const subject='MESA inquiry — '+f.get('package');
+        const body=['Hello MESA,','',"I'm interested in: "+f.get('package'),'','Name: '+f.get('name'),'Reply email: '+f.get('email'),'','Project details:',f.get('details'),'','Thanks!'].join('\n');
+        return{subject,body};
+      }
+      inquiryForm.addEventListener('submit',e=>{e.preventDefault();const m=prepareInquiry();if(!m)return;inquiryStatus.textContent='Your email app should open with a draft. Please press Send there to finish.';window.location.href='mailto:mohamed.webdevelop@gmail.com?subject='+encodeURIComponent(m.subject)+'&body='+encodeURIComponent(m.body);});
+      document.querySelector('#copy-inquiry').addEventListener('click',async()=>{const m=prepareInquiry();if(!m)return;const message='To: mohamed.webdevelop@gmail.com\nSubject: '+m.subject+'\n\n'+m.body;try{await navigator.clipboard.writeText(message);inquiryStatus.textContent='Message copied. Paste it into any email app and send to mohamed.webdevelop@gmail.com.';}catch{inquiryStatus.textContent='Copy unavailable here. Use Continue in email instead.';}});
       const revealItems = document.querySelectorAll('[data-reveal]');
       if ('IntersectionObserver' in window && !reduceMotion.matches) {
         const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);} }); }, {threshold:.1,rootMargin:'0px 0px -25px 0px'});
