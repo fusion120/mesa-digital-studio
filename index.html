@@ -29,13 +29,26 @@
     @media(max-width:900px){.wrap{width:min(100% - 36px,1280px)}.nav-links{display:none}.menu-toggle{display:block}.mobile-menu{display:none;position:fixed;z-index:99;top:93px;left:16px;right:16px;padding:25px;background:#17212d;border:1px solid #3b4956;border-radius:20px;flex-direction:column;gap:22px;font-weight:700}.mobile-menu.open{display:flex}.hero-copy{align-items:start;flex-direction:column}.intro{grid-template-columns:1fr;gap:20px}.intro-right{grid-column:auto}.services-grid{grid-template-columns:1fr}.work-heading{align-items:start;flex-direction:column}.projects{grid-template-columns:1fr}.package-scroll{height:auto}.package-sticky{height:auto;position:relative;padding-bottom:65px}.package-viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.package-track{transform:none!important;padding:10px 18px 25px}.package-card{scroll-snap-align:center;width:min(83vw,380px)}.package-progress{display:none}.package-head,.package-note{width:calc(100% - 36px)}.process-head,.faq-wrap{grid-template-columns:1fr}.step{grid-template-columns:50px 1fr;gap:16px}.step p{grid-column:2}.footer{gap:25px;flex-wrap:wrap}}@media(max-width:540px){.nav{height:65px;padding:0 17px}.nav-cta{padding:9px 14px;font-size:11px}.hero{padding:140px 0 95px;min-height:100svh}.hero h1{font-size:clamp(61px,14vw,82px)}.hero-copy p{font-size:16px}.scroll-indicator{bottom:20px}.section{padding:95px 0}.service{padding:30px;min-height:310px}.service h3{margin-top:65px}.project-art{min-height:300px}.project-art .big{font-size:57px}.packages-intro{padding:100px 0 40px}.package-head p{display:none}.contact-section{padding-top:80px}.contact-panel{border-radius:25px}.contact-panel h2{font-size:52px}.footer{align-items:start;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important} [data-reveal]{opacity:1;transform:none}.package-track{transform:none!important}.package-scroll{height:auto}.package-sticky{position:relative;height:auto}.package-viewport{overflow-x:auto}.progress{display:none}}
     /* The card sequence behaves like a pinned horizontal filmstrip.
        Downward page motion moves the cards right, then normal scrolling resumes. */
-    .package-track{flex-direction:row-reverse}
+    /* Clip horizontal paint without creating an extra scrolling ancestor for sticky. */
+    body{overflow-x:clip}
+    .package-track{flex-direction:row-reverse;contain:layout style}
     .package-scroll{height:220vh}
-    .package-sticky{position:sticky;top:0;height:100svh;min-height:620px;padding-bottom:0}
+    .package-sticky{position:sticky;top:0;height:100svh;min-height:0;padding-bottom:0}
     .package-viewport{overflow:hidden;scroll-snap-type:none}
     .package-track{transform:translate3d(var(--shift,0px),0,0)!important}
     .package-progress{display:block}
     .package-head p{display:block}
+    .marquee span:after{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);vertical-align:middle;margin-left:50px}
+    .package-card li:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);vertical-align:middle;margin:0 12px 2px 0}
+    .featured li:before{background:#355c26}
+    .service-icon{font-size:0}
+    .service-icon:before{content:"";display:block;width:48px;height:48px;border:1px solid currentColor;border-radius:50%}
+    .service:nth-child(2) .service-icon:before{border-radius:12px;transform:rotate(25deg)}
+    .menu-toggle{width:35px;height:35px;position:relative;font-size:0}
+    .menu-toggle:before,.menu-toggle:after{content:"";position:absolute;left:6px;right:6px;height:2px;background:currentColor;transition:transform .2s,top .2s}
+    .menu-toggle:before{top:13px}.menu-toggle:after{top:21px}
+    .menu-toggle[aria-expanded="true"]:before{top:17px;transform:rotate(45deg)}
+    .menu-toggle[aria-expanded="true"]:after{top:17px;transform:rotate(-45deg)}
     @media(max-width:900px){
       .package-scroll{height:220vh}
       .package-sticky{position:sticky;top:0;height:100svh;min-height:0;padding-bottom:0}
@@ -49,9 +62,9 @@
       .package-sticky{justify-content:center}
       .package-head{margin-bottom:9px}
       .package-head p{display:none}
-      .package-card{min-height:425px;max-height:65svh;padding:23px}
+      .package-card{min-height:0;height:min(495px,70svh);max-height:none;padding:23px}
       .package-card h3{font-size:34px;margin:14px 0 5px}
-      .package-card ul{margin:15px 0 18px;line-height:1.85}
+      .package-card ul{margin:15px 0 18px;line-height:1.65}
       .package-note{margin-top:0}
     }
     @media(prefers-reduced-motion:reduce){
@@ -66,32 +79,32 @@
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div><div class="progress" aria-hidden="true"></div>
-  <header class="nav"><a href="#top" class="brand" aria-label="MESA home">MESA<span>✳</span></a><nav class="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#work">Work</a><a href="#packages">Packages</a><a href="#process">Process</a></nav><a class="nav-cta" href="#contact">Start a project ↗</a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button></header>
+  <header class="nav"><a href="#top" class="brand" aria-label="MESA home">MESA<span>.</span></a><nav class="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#work">Work</a><a href="#packages">Packages</a><a href="#process">Process</a></nav><a class="nav-cta" href="#contact">Start a project</a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"></button></header>
   <nav class="mobile-menu" aria-label="Mobile navigation"><a href="#services">Services</a><a href="#work">Work</a><a href="#packages">Packages</a><a href="#process">Process</a><a href="#contact">Contact</a></nav>
   <main id="top">
-    <section class="hero"><div class="hero-grid" aria-hidden="true"></div><div class="hero-glow" aria-hidden="true"></div><div class="wrap hero-inner"><div class="hero-meta"><span class="live-dot"></span> INDEPENDENT CREATIVE STUDIO <span style="opacity:.5">/</span> KATY, TEXAS</div><h1><span>Not just</span><br><span class="outline-word">another</span><br><span>website.</span></h1><div class="hero-copy"><p>We build bold digital experiences and advertising that make small businesses impossible to overlook.</p><div class="hero-actions"><a href="#work" class="pill">Explore our work <span>↗</span></a><a href="#packages" class="pill ghost">View packages <span>↘</span></a></div></div></div><div class="scroll-indicator">Scroll to explore</div></section>
+    <section class="hero"><div class="hero-grid" aria-hidden="true"></div><div class="hero-glow" aria-hidden="true"></div><div class="wrap hero-inner"><div class="hero-meta"><span class="live-dot"></span> INDEPENDENT CREATIVE STUDIO <span style="opacity:.5">/</span> KATY, TEXAS</div><h1><span>Not just</span><br><span class="outline-word">another</span><br><span>website.</span></h1><div class="hero-copy"><p>We build bold digital experiences and advertising that make small businesses impossible to overlook.</p><div class="hero-actions"><a href="#work" class="pill">Explore our work</a><a href="#packages" class="pill ghost">View packages</a></div></div></div><div class="scroll-indicator">Scroll to explore</div></section>
     <div class="marquee" aria-hidden="true"><div class="marquee-inner"><span>DESIGN THAT MOVES</span><span>WEBSITES THAT WORK</span><span>BRANDS THAT STAND OUT</span><span>IDEAS INTO IMPACT</span><span>DESIGN THAT MOVES</span><span>WEBSITES THAT WORK</span><span>BRANDS THAT STAND OUT</span><span>IDEAS INTO IMPACT</span></div></div>
-    <section class="section wrap" id="services"><div class="intro"><div class="eyebrow" data-reveal>01 / What we do</div><h2 data-reveal>We make good businesses <em>look unforgettable.</em></h2><p class="intro-right" data-reveal>You do the hard work of running your business. We create the digital first impression, with clean strategy, thoughtful design, and a clear path for customers to reach you.</p></div><div class="services-grid"><article class="service" data-reveal><div class="service-num">01 — DIGITAL EXPERIENCES</div><div class="service-icon" aria-hidden="true">↗</div><h3>Websites with<br>presence.</h3><p>Beautiful, fast, mobile-friendly sites with a purpose behind every section—from the first glance to the final click.</p></article><article class="service" data-reveal><div class="service-num">02 — CREATIVE CAMPAIGNS</div><div class="service-icon" aria-hidden="true">✳</div><h3>Advertising<br>that connects.</h3><p>Campaign visuals and compelling copy built to help your offer get noticed. No vague promises, just considered creative.</p></article></div></section>
+    <section class="section wrap" id="services"><div class="intro"><div class="eyebrow" data-reveal>01 / What we do</div><h2 data-reveal>We make good businesses <em>look unforgettable.</em></h2><p class="intro-right" data-reveal>You do the hard work of running your business. We create the digital first impression, with clean strategy, thoughtful design, and a clear path for customers to reach you.</p></div><div class="services-grid"><article class="service" data-reveal><div class="service-num">01 — DIGITAL EXPERIENCES</div><div class="service-icon" aria-hidden="true"></div><h3>Websites with<br>presence.</h3><p>Beautiful, fast, mobile-friendly sites with a purpose behind every section—from the first glance to the final click.</p></article><article class="service" data-reveal><div class="service-num">02 — CREATIVE CAMPAIGNS</div><div class="service-icon" aria-hidden="true"></div><h3>Advertising<br>that connects.</h3><p>Campaign visuals and compelling copy built to help your offer get noticed. No vague promises, just considered creative.</p></article></div></section>
     <section class="work-section" id="work"><div class="wrap"><div class="work-heading"><div data-reveal><div class="eyebrow">02 / Creative showcase</div><h2>Proof of<br>possibility.</h2></div><p data-reveal>A glimpse of our design direction. These are original concepts, not paid client projects or claims of results.</p></div><div class="projects"><article class="project" data-reveal><div class="project-art barber"><div class="topline"><span>THE CROWN STUDIO</span><span>EST. 2026</span></div><div class="art-circle" aria-hidden="true"></div><div class="big">The art<br>of a clean cut.</div></div><div class="project-caption"><strong>Editorial barbershop website</strong><span>CONCEPT / WEB</span></div></article><article class="project" data-reveal><div class="project-art detail"><div class="topline"><span>PRIME DETAIL CO.</span><span>01 / 02</span></div><div class="art-circle" aria-hidden="true"></div><div class="big">Every detail<br>counts.</div></div><div class="project-caption"><strong>Mobile detailing campaign</strong><span>CONCEPT / ADS</span></div></article></div><p class="project-note">Concept visuals are illustrative design explorations. Real client work will be featured here as projects are completed.</p></div></section>
-    <section class="packages-section" id="packages"><div class="wrap packages-intro"><div class="eyebrow" data-reveal>03 / Invest in your presence</div><h2 data-reveal>Big ideas.<br>Clear packages.</h2><p data-reveal>Transparent starting prices, a defined scope, and room to grow. On desktop, scroll down to watch the packages shift to the right.</p></div><div class="package-scroll" id="package-scroll"><div class="package-sticky"><div class="package-head"><div class="eyebrow">Explore all 6 packages</div><p>SCROLL DOWN TO MOVE THE CARDS →</p></div><div class="package-viewport"><div class="package-track" id="package-track">
-      <article class="package-card"><div class="package-type">WEBSITE / 01</div><h3>Launch</h3><div class="package-price">$299 <small>one-time</small></div><ul><li>One-page responsive website</li><li>Up to five content sections</li><li>Booking or contact link</li><li>One revision round</li><li>Client-provided content</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Launch%20website%20inquiry">Choose Launch <span>↗</span></a></article>
-      <article class="package-card featured"><div class="package-type">WEBSITE / POPULAR</div><h3>Growth</h3><div class="package-price">$549 <small>one-time</small></div><ul><li>Up to three responsive pages</li><li>Custom brand styling</li><li>Services and gallery</li><li>Contact form or booking link</li><li>Two revision rounds</li></ul><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Growth%20website%20inquiry">Choose Growth <span>↗</span></a></article>
-      <article class="package-card"><div class="package-type">WEBSITE / 03</div><h3>Pro</h3><div class="package-price">$899 <small>one-time</small></div><ul><li>Up to five responsive pages</li><li>Custom layouts and sections</li><li>FAQ and testimonials layout</li><li>Basic on-page SEO setup</li><li>Three revision rounds</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Pro%20website%20inquiry">Choose Pro <span>↗</span></a></article>
-      <article class="package-card"><div class="package-type">ADVERTISING / 01</div><h3>Essentials</h3><div class="package-price">$99 <small>one-time</small></div><ul><li>Three static ad designs</li><li>Three headline options</li><li>Two caption options</li><li>One revision round</li><li>Ready-to-post graphics</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Essentials%20ads%20inquiry">Choose Essentials <span>↗</span></a></article>
-      <article class="package-card featured"><div class="package-type">ADVERTISING / CAMPAIGN</div><h3>Launch Ads</h3><div class="package-price">$249 <small>one-time</small></div><ul><li>Five static ad designs</li><li>Campaign copy and CTA</li><li>One Meta campaign setup</li><li>Basic audience and placements</li><li>One revision round</li></ul><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Launch%20Ads%20inquiry">Choose Launch Ads <span>↗</span></a></article>
-      <article class="package-card"><div class="package-type">ADVERTISING / MONTHLY</div><h3>Stay Visible</h3><div class="package-price">$299 <small>/ month</small></div><ul><li>Eight static ad designs monthly</li><li>Captions and headlines</li><li>Monthly creative refresh</li><li>One revision round per batch</li><li>Basic creative summary</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Stay%20Visible%20inquiry">Choose Stay Visible <span>↗</span></a></article>
+    <section class="packages-section" id="packages"><div class="wrap packages-intro"><div class="eyebrow" data-reveal>03 / Invest in your presence</div><h2 data-reveal>Big ideas.<br>Clear packages.</h2><p data-reveal>Transparent starting prices, a defined scope, and room to grow. Scroll to explore each package. The page continues when you reach the end.</p></div><div class="package-scroll" id="package-scroll"><div class="package-sticky"><div class="package-head"><div class="eyebrow">Explore all 6 packages</div><p>SCROLL TO EXPLORE THE PACKAGES</p></div><div class="package-viewport"><div class="package-track" id="package-track">
+      <article class="package-card"><div class="package-type">WEBSITE / 01</div><h3>Launch</h3><div class="package-price">$299 <small>one-time</small></div><ul><li>One-page responsive website</li><li>Up to five content sections</li><li>Booking or contact link</li><li>One revision round</li><li>Client-provided content</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Launch%20website%20inquiry">Choose Launch</a></article>
+      <article class="package-card featured"><div class="package-type">WEBSITE / POPULAR</div><h3>Growth</h3><div class="package-price">$549 <small>one-time</small></div><ul><li>Up to three responsive pages</li><li>Custom brand styling</li><li>Services and gallery</li><li>Contact form or booking link</li><li>Two revision rounds</li></ul><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Growth%20website%20inquiry">Choose Growth</a></article>
+      <article class="package-card"><div class="package-type">WEBSITE / 03</div><h3>Pro</h3><div class="package-price">$899 <small>one-time</small></div><ul><li>Up to five responsive pages</li><li>Custom layouts and sections</li><li>FAQ and testimonials layout</li><li>Basic on-page SEO setup</li><li>Three revision rounds</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Pro%20website%20inquiry">Choose Pro</a></article>
+      <article class="package-card"><div class="package-type">ADVERTISING / 01</div><h3>Essentials</h3><div class="package-price">$99 <small>one-time</small></div><ul><li>Three static ad designs</li><li>Three headline options</li><li>Two caption options</li><li>One revision round</li><li>Ready-to-post graphics</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Essentials%20ads%20inquiry">Choose Essentials</a></article>
+      <article class="package-card featured"><div class="package-type">ADVERTISING / CAMPAIGN</div><h3>Launch Ads</h3><div class="package-price">$249 <small>one-time</small></div><ul><li>Five static ad designs</li><li>Campaign copy and CTA</li><li>One Meta campaign setup</li><li>Basic audience and placements</li><li>One revision round</li></ul><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Launch%20Ads%20inquiry">Choose Launch Ads</a></article>
+      <article class="package-card"><div class="package-type">ADVERTISING / MONTHLY</div><h3>Stay Visible</h3><div class="package-price">$299 <small>/ month</small></div><ul><li>Eight static ad designs monthly</li><li>Captions and headlines</li><li>Monthly creative refresh</li><li>One revision round per batch</li><li>Basic creative summary</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Stay%20Visible%20inquiry">Choose Stay Visible</a></article>
     </div></div><div class="package-progress" aria-hidden="true"><span></span></div><p class="package-note">Website hosting, domains and paid integrations are separate. <strong>Advertising platform spend is not included.</strong> Clients fund their own ad accounts. Services depend on scope and account eligibility. No sales or advertising results are guaranteed.</p></div></div></section>
     <section class="section process" id="process"><div class="wrap"><div class="process-head"><div data-reveal><div class="eyebrow">04 / How it works</div><h2>Simple process.<br>Thoughtful results.</h2></div><p data-reveal>Good design starts with good communication. No confusing process or disappearing acts—just a clear brief, honest timeline, and feedback along the way.</p></div><div class="steps"><div class="step" data-reveal><div class="step-num">01</div><h3>Tell us the vision.</h3><p>Share what your business does, who you serve, your goals, and your content.</p></div><div class="step" data-reveal><div class="step-num">02</div><h3>We build the direction.</h3><p>We agree on scope, then create the first design for your review.</p></div><div class="step" data-reveal><div class="step-num">03</div><h3>Refine & launch.</h3><p>We make the included revisions and prepare your approved deliverables.</p></div></div></div></section>
     <section class="section wrap"><div class="faq-wrap"><div data-reveal><div class="eyebrow">05 / Good to know</div><h2>Questions?<br>Answered.</h2></div><div class="faq" data-reveal><details><summary>What do I need to get started?</summary><p>A short description of your business, preferred colors, logo if you have one, photos, services, and the contact or booking link you'd like customers to use.</p></details><details><summary>Do I own my website?</summary><p>Yes. Your agreed website deliverables and business content are yours. Hosting, domain registration, and any third-party services should remain in accounts you control.</p></details><details><summary>Does the ad package include money spent on ads?</summary><p>No. Our fees cover creative work and any specifically listed setup services. Your media budget is separate and paid directly through your own advertising account.</p></details><details><summary>How long will a project take?</summary><p>Delivery depends on the package, requested functionality, and how quickly content and feedback arrive. We'll agree on a realistic timeline before work begins.</p></details><details><summary>Can you guarantee more customers?</summary><p>No agency can honestly guarantee a specific number of customers from a website or ad. We focus on strong design, clear messaging, and sound setup within the agreed scope.</p></details></div></div></section>
-    <section class="contact-section wrap" id="contact"><div class="contact-panel" data-reveal><div class="eyebrow">06 / Let's build something</div><h2>Your next chapter starts here.</h2><p>Ready to make your business look as good as the work you do? Tell us your idea and let's make a plan.</p><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=Let's%20build%20with%20MESA">Start your project <span>↗</span></a></div><footer class="footer"><div><div class="brand">MESA<span style="color:var(--accent)">✳</span></div><small>MODERN EXPERIENCES, SITES & ADVERTISING</small></div><div>Independent digital studio · Katy, Texas<br>© 2026 MESA Digital Studio</div><a href="mailto:mohamed.webdevelop@gmail.com">mohamed.webdevelop@gmail.com ↗</a></footer></section>
+    <section class="contact-section wrap" id="contact"><div class="contact-panel" data-reveal><div class="eyebrow">06 / Let's build something</div><h2>Your next chapter starts here.</h2><p>Ready to make your business look as good as the work you do? Tell us your idea and let's make a plan.</p><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=Let's%20build%20with%20MESA">Start your project</a></div><footer class="footer"><div><div class="brand">MESA<span style="color:var(--accent)">.</span></div><small>MODERN EXPERIENCES, SITES & ADVERTISING</small></div><div>Independent digital studio · Katy, Texas<br>© 2026 MESA Digital Studio</div><a href="mailto:mohamed.webdevelop@gmail.com">mohamed.webdevelop@gmail.com</a></footer></section>
   </main>
   <script>
     (() => {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const menuButton = document.querySelector('.menu-toggle');
       const mobileMenu = document.querySelector('.mobile-menu');
-      menuButton.addEventListener('click', () => { const open = mobileMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)); menuButton.textContent = open ? '×' : '☰'; });
-      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuButton.setAttribute('aria-expanded','false'); menuButton.textContent='☰'; }));
+      menuButton.addEventListener('click', () => { const open = mobileMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)); });
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuButton.setAttribute('aria-expanded','false'); }));
       const revealItems = document.querySelectorAll('[data-reveal]');
       if ('IntersectionObserver' in window && !reduceMotion.matches) {
         const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);} }); }, {threshold:.1,rootMargin:'0px 0px -25px 0px'});
@@ -99,21 +112,22 @@
       } else revealItems.forEach(el => el.classList.add('visible'));
       const scrollSection = document.querySelector('#package-scroll'), track = document.querySelector('#package-track'), progressBar = document.querySelector('.package-progress');
       let ticking = false;
+      const sticky = scrollSection.querySelector('.package-sticky');
+      const viewport = scrollSection.querySelector('.package-viewport');
       let horizontalDistance = 0;
+      let lastWidth = window.innerWidth;
       function sizeHorizontalScene() {
-        // One vertical pixel corresponds approximately to one horizontal pixel.
-        // The sticky viewport releases exactly when the complete rail is traversed.
+        // Measure the actual rail, not a guessed viewport-height multiplier.
         if (reduceMotion.matches) {
           scrollSection.style.height = 'auto';
           horizontalDistance = 0;
           track.style.setProperty('--shift', '0px');
           return;
         }
-        const oldShift = track.style.getPropertyValue('--shift');
-        track.style.setProperty('--shift', '0px');
-        horizontalDistance = Math.max(0,track.scrollWidth-window.innerWidth);
-        scrollSection.style.height = (window.innerHeight + Math.max(horizontalDistance, 1)) + 'px';
-        track.style.setProperty('--shift', oldShift || '0px');
+        horizontalDistance = Math.max(0,track.scrollWidth-viewport.clientWidth);
+        // Sticky's real height is the reference; Safari's browser chrome can
+        // change innerHeight independently of this visual layout.
+        scrollSection.style.height = (sticky.offsetHeight + horizontalDistance + 1) + 'px';
       }
       function update() {
         ticking = false;
@@ -121,7 +135,7 @@
         document.documentElement.style.setProperty('--progress', (window.scrollY/pageMax).toFixed(4));
         if (reduceMotion.matches) { track.style.setProperty('--shift','0px'); return; }
         const rect = scrollSection.getBoundingClientRect();
-        const travel = Math.max(1,scrollSection.offsetHeight-window.innerHeight);
+        const travel = Math.max(1,scrollSection.offsetHeight-sticky.offsetHeight);
         const p = Math.max(0,Math.min(1,-rect.top/travel));
         // The first visible card is Launch. The rail then moves all the way
         // right through Growth, Pro, and the ad packages before unpinning.
@@ -130,7 +144,12 @@
       }
       function requestUpdate(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
       window.addEventListener('scroll',requestUpdate,{passive:true});
-      window.addEventListener('resize',()=>{sizeHorizontalScene();requestUpdate();},{passive:true});
+      window.addEventListener('resize',()=>{
+        // Mobile address-bar expansion/collapse fires resize events. A
+        // height-only resize must never reset the pinned scroll choreography.
+        if(Math.abs(window.innerWidth-lastWidth)>2){lastWidth=window.innerWidth;sizeHorizontalScene();}
+        requestUpdate();
+      },{passive:true});
       reduceMotion.addEventListener?.('change',()=>{sizeHorizontalScene();requestUpdate();});
       window.addEventListener('load',()=>{sizeHorizontalScene();update();},{once:true});
       sizeHorizontalScene();
