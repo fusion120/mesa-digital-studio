@@ -238,6 +238,39 @@
     .preview-address{flex:1;border:1px solid #d0dbdc;background:#fff;border-radius:999px;padding:6px 13px;color:#697c83;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
     .preview-frame{display:block;flex:1;min-height:0;width:100%;border:0;background:white}
     @media(max-width:540px){.preview-toolbar{padding:12px}.preview-badge{display:none}.preview-dialog{border-radius:16px}.preview-shell{height:88svh}.project-preview-button{right:14px;top:14px}}
+    .custom-section{background:#f8faf9;padding:110px 0 130px;border-top:1px solid #d8e2e2}
+    .custom-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:44px}
+    .custom-heading h2{margin:14px 0 0;font-size:clamp(43px,6vw,76px)}
+    .custom-heading p{font-size:16px;color:#63747c;max-width:370px;margin:0}
+    .custom-builder{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:26px;align-items:start}
+    .custom-options,.custom-summary{background:#fff;border:1px solid #dce4e5;border-radius:28px;padding:clamp(23px,3vw,38px);box-shadow:0 16px 50px #2045520b}
+    .custom-summary{position:sticky;top:102px}
+    .builder-label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#4b7382;font-weight:800;margin-bottom:17px}
+    .builder-switch{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:38px}
+    .builder-switch label{cursor:pointer}
+    .builder-switch input{position:absolute;opacity:0;pointer-events:none}
+    .builder-switch span{display:block;border:1px solid #bfced2;border-radius:15px;text-align:center;padding:16px 10px;font-weight:700;color:#44616d;transition:background .2s,border-color .2s}
+    .builder-switch input:checked+span{background:#204d60;color:#fff;border-color:#204d60}
+    .builder-switch input:focus-visible+span{outline:3px solid #81a9b8;outline-offset:2px}
+    .builder-options{display:grid;gap:10px}
+    .builder-choice{display:flex;align-items:center;gap:15px;padding:18px;border:1px solid #e1e8e8;border-radius:16px;cursor:pointer;transition:background .2s,border-color .2s}
+    .builder-choice:hover{background:#f4f8f8;border-color:#acc4cd}
+    .builder-choice:has(input:checked){background:#edf5f6;border-color:#5b899b}
+    .builder-choice input{accent-color:#22546a;width:19px;height:19px;flex:0 0 auto}
+    .builder-choice .builder-text{flex:1;display:flex;flex-direction:column;gap:3px}
+    .builder-choice strong{font-size:15px;color:#233e4b}
+    .builder-choice small{font-size:12px;color:#6a7a81}
+    .builder-choice .builder-cost{white-space:nowrap;color:#2d5f71;font-size:14px;font-weight:800}
+    .builder-baseline{padding:16px 18px;background:#f3f6f5;border-radius:15px;display:flex;justify-content:space-between;gap:15px;margin-bottom:12px;color:#2d4b58;font-weight:700;font-size:14px}
+    .custom-summary h3{font-size:26px;letter-spacing:-.04em;margin:12px 0 16px}
+    .custom-summary ul{list-style:none;padding:0;margin:0 0 20px;color:#566c76;font-size:13px;line-height:2}
+    .custom-summary li:before{content:"";display:inline-block;width:5px;height:5px;background:#3c7d91;border-radius:50%;vertical-align:middle;margin:0 10px 2px 0}
+    .builder-total{display:flex;justify-content:space-between;align-items:end;border-top:1px solid #d8e2e2;padding-top:20px;margin-top:12px}
+    .builder-total span{font-size:13px;color:#5b6d75}.builder-total strong{font:800 40px Manrope,sans-serif;letter-spacing:-.06em;color:#1b4659}
+    .builder-disclaimer{font-size:12px!important;line-height:1.5;color:#71818a;margin:9px 0 24px}
+    .custom-summary .pill{width:100%;justify-content:center;cursor:pointer}
+    @media(max-width:900px){.custom-builder{grid-template-columns:1fr}.custom-summary{position:relative;top:auto}.custom-heading{align-items:start;flex-direction:column}.custom-section{padding:90px 0}}
+    @media(max-width:540px){.custom-options,.custom-summary{border-radius:23px;padding:23px}.builder-choice{padding:14px;gap:11px}.builder-choice strong{font-size:13px}.builder-choice small{font-size:11px}.builder-cost{font-size:12px!important}}
   </style>
 </head>
 <body>
@@ -257,7 +290,28 @@
       <article class="package-card featured"><div class="package-type">ADVERTISING / CAMPAIGN</div><h3>Launch Ads</h3><div class="package-price">$249 <small>one-time</small></div><ul><li>Five static ad designs</li><li>Campaign copy and CTA</li><li>One Meta campaign setup</li><li>Basic audience and placements</li><li>One revision round</li></ul><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Launch%20Ads%20inquiry">Choose Launch Ads</a></article>
       <article class="package-card"><div class="package-type">ADVERTISING / MONTHLY</div><h3>Stay Visible</h3><div class="package-price">$299 <small>/ month</small></div><ul><li>Eight static ad designs monthly</li><li>Captions and headlines</li><li>Monthly creative refresh</li><li>One revision round per batch</li><li>Basic creative summary</li></ul><a class="pill ghost" href="mailto:mohamed.webdevelop@gmail.com?subject=MESA%20Stay%20Visible%20inquiry">Choose Stay Visible</a></article>
     </div></div><div class="package-progress" aria-hidden="true"><span></span></div><p class="package-note">Website hosting, domains and paid integrations are separate. <strong>Advertising platform spend is not included.</strong> Clients fund their own ad accounts. Services depend on scope and account eligibility. No sales or advertising results are guaranteed.</p></div></div></section>
-    <section class="section process" id="process"><div class="wrap"><div class="process-head"><div data-reveal><div class="eyebrow">04 / How it works</div><h2>Simple process.<br>Thoughtful results.</h2></div><p data-reveal>Good design starts with good communication. No confusing process or disappearing acts—just a clear brief, honest timeline, and feedback along the way.</p></div><div class="steps"><div class="step" data-reveal><div class="step-num">01</div><h3>Tell us the vision.</h3><p>Share what your business does, who you serve, your goals, and your content.</p></div><div class="step" data-reveal><div class="step-num">02</div><h3>We build the direction.</h3><p>We agree on scope, then create the first design for your review.</p></div><div class="step" data-reveal><div class="step-num">03</div><h3>Refine & launch.</h3><p>We make the included revisions and prepare your approved deliverables.</p></div></div></div></section>
+    <section class="custom-section" id="custom-package">
+      <div class="wrap">
+        <div class="custom-heading"><div><div class="eyebrow">04 / Made for your needs</div><h2>Build your own<br>package.</h2></div><p>Choose the essentials, add only what you need, and see a starting estimate before reaching out.</p></div>
+        <div class="custom-builder">
+          <div class="custom-options">
+            <span class="builder-label">01 / What do you need?</span>
+            <div class="builder-switch" role="radiogroup" aria-label="Choose service"><label><input type="radio" name="builder-service" value="web" checked><span>Website design</span></label><label><input type="radio" name="builder-service" value="ads"><span>Advertising</span></label></div>
+            <span class="builder-label">02 / Customize your project</span>
+            <div class="builder-baseline"><span id="builder-base-name">Starter website · 1 page, up to 5 sections</span><span id="builder-base-price">$299</span></div>
+            <div class="builder-options" id="builder-options"></div>
+          </div>
+          <aside class="custom-summary" aria-live="polite">
+            <div class="eyebrow">Your custom package</div><h3 id="builder-summary-title">Website design</h3>
+            <ul id="builder-summary-list"><li>Starter website</li></ul>
+            <div class="builder-total"><span>Estimated starting price</span><strong id="builder-total">$299</strong></div>
+            <p class="builder-disclaimer">Estimate only, not a final quote. Domain, hosting, third-party tools and ad platform spend are separate. Final scope and pricing are confirmed before work begins.</p>
+            <button type="button" class="pill" id="builder-request">Request this package</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="section process" id="process"><div class="wrap"><div class="process-head"><div data-reveal><div class="eyebrow">05 / How it works</div><h2>Simple process.<br>Thoughtful results.</h2></div><p data-reveal>Good design starts with good communication. No confusing process or disappearing acts—just a clear brief, honest timeline, and feedback along the way.</p></div><div class="steps"><div class="step" data-reveal><div class="step-num">01</div><h3>Tell us the vision.</h3><p>Share what your business does, who you serve, your goals, and your content.</p></div><div class="step" data-reveal><div class="step-num">02</div><h3>We build the direction.</h3><p>We agree on scope, then create the first design for your review.</p></div><div class="step" data-reveal><div class="step-num">03</div><h3>Refine & launch.</h3><p>We make the included revisions and prepare your approved deliverables.</p></div></div></div></section>
     <section class="section wrap"><div class="faq-wrap"><div data-reveal><div class="eyebrow">05 / Good to know</div><h2>Questions?<br>Answered.</h2></div><div class="faq" data-reveal><details><summary>What do I need to get started?</summary><p>A short description of your business, preferred colors, logo if you have one, photos, services, and the contact or booking link you'd like customers to use.</p></details><details><summary>Do I own my website?</summary><p>Yes. Your agreed website deliverables and business content are yours. Hosting, domain registration, and any third-party services should remain in accounts you control.</p></details><details><summary>Does the ad package include money spent on ads?</summary><p>No. Our fees cover creative work and any specifically listed setup services. Your media budget is separate and paid directly through your own advertising account.</p></details><details><summary>How long will a project take?</summary><p>Delivery depends on the package, requested functionality, and how quickly content and feedback arrive. We'll agree on a realistic timeline before work begins.</p></details><details><summary>Can you guarantee more customers?</summary><p>No agency can honestly guarantee a specific number of customers from a website or ad. We focus on strong design, clear messaging, and sound setup within the agreed scope.</p></details></div></div></section>
     <section class="contact-section wrap" id="contact"><div class="contact-panel" data-reveal><div class="eyebrow">06 / Let's build something</div><h2>Tell us what you’re building.</h2><p>Whether you need a first website, a redesign, or help getting the word out, we’d like to hear about it.</p><a class="pill" href="mailto:mohamed.webdevelop@gmail.com?subject=Let's%20build%20with%20MESA">Start your project</a></div><footer class="footer"><div><div class="brand">MESA<span style="color:var(--accent)">.</span></div><small>MODERN EXPERIENCES, SITES & ADVERTISING</small></div><div>Independent digital studio · Katy, Texas<br>© 2026 MESA Digital Studio</div><a href="mailto:mohamed.webdevelop@gmail.com">mohamed.webdevelop@gmail.com</a></footer></section>
   </main>
@@ -269,7 +323,7 @@
       <form class="inquiry-form" id="inquiry-form">
         <label>Your name<input name="name" type="text" autocomplete="name" placeholder="Your name" required maxlength="100"></label>
         <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@business.com" required maxlength="160"></label>
-        <label>What are you interested in?<select name="package" required><option value="General project inquiry">Not sure yet</option><option value="Launch website — $299">Launch website — $299</option><option value="Growth website — $549">Growth website — $549</option><option value="Pro website — $899">Pro website — $899</option><option value="Essentials ads — $99">Essentials ads — $99</option><option value="Launch Ads — $249">Launch Ads — $249</option><option value="Stay Visible — $299/month">Stay Visible — $299/month</option></select></label>
+        <label>What are you interested in?<select name="package" required><option value="General project inquiry">Not sure yet</option><option value="Custom package request">Custom package request</option><option value="Launch website — $299">Launch website — $299</option><option value="Growth website — $549">Growth website — $549</option><option value="Pro website — $899">Pro website — $899</option><option value="Essentials ads — $99">Essentials ads — $99</option><option value="Launch Ads — $249">Launch Ads — $249</option><option value="Stay Visible — $299/month">Stay Visible — $299/month</option></select></label>
         <label>About your business or project<textarea name="details" required maxlength="3000" placeholder="What does your business do, and what do you need help with?"></textarea></label>
         <div class="inquiry-actions"><button type="submit" class="pill">Continue in email</button><button type="button" class="pill ghost" id="copy-inquiry">Copy message</button></div>
         <p class="inquiry-status" role="status" aria-live="polite" id="inquiry-status"></p>
@@ -334,6 +388,59 @@
         inquiryDialog.showModal();
         inquiryForm.elements['name'].focus();
       }
+      const builderCatalog={
+        web:{title:'Website design',baseName:'Starter website · 1 page, up to 5 sections',base:299,items:[
+          {id:'pages',label:'Two additional pages',detail:'Expand the site beyond the starter page',price:150},
+          {id:'gallery',label:'Gallery or portfolio section',detail:'Showcase your work with photos or projects',price:75},
+          {id:'booking',label:'Booking or inquiry form',detail:'A custom styled customer form',price:85},
+          {id:'copy',label:'Website copywriting',detail:'Help shaping the headlines and page text',price:100},
+          {id:'seo',label:'SEO basics',detail:'Titles, descriptions and on-page setup',price:75}
+        ]},
+        ads:{title:'Advertising creative',baseName:'Essentials · 3 static ad designs',base:99,items:[
+          {id:'extra',label:'Two additional ad graphics',detail:'Five total creative designs',price:60},
+          {id:'copy',label:'Headlines and ad copy',detail:'Additional messaging and CTA options',price:45},
+          {id:'formats',label:'Extra ad sizes',detail:'Adapt creatives for different placements',price:45},
+          {id:'campaign',label:'Basic Meta campaign setup',detail:'Setup using your own eligible ad account',price:150},
+          {id:'refresh',label:'Second creative variation',detail:'Alternate direction for testing',price:70}
+        ]}
+      };
+      const builderOptions=document.querySelector('#builder-options');
+      const builderServiceInputs=document.querySelectorAll('input[name="builder-service"]');
+      const builderState={web:new Set(),ads:new Set()};
+      let builderService='web';
+      function builderSelection(){const c=builderCatalog[builderService];const chosen=c.items.filter(item=>builderState[builderService].has(item.id));return{catalog:c,chosen,total:c.base+chosen.reduce((sum,item)=>sum+item.price,0)};}
+      function updateBuilderSummary(){
+        const{catalog,chosen,total}=builderSelection();
+        document.querySelector('#builder-summary-title').textContent=catalog.title;
+        document.querySelector('#builder-total').textContent='$'+total.toLocaleString();
+        const list=document.querySelector('#builder-summary-list');list.replaceChildren();
+        [catalog.baseName,...chosen.map(x=>x.label)].forEach(label=>{const li=document.createElement('li');li.textContent=label;list.appendChild(li);});
+      }
+      function renderBuilder(){
+        const catalog=builderCatalog[builderService];
+        document.querySelector('#builder-base-name').textContent=catalog.baseName;
+        document.querySelector('#builder-base-price').textContent='$'+catalog.base;
+        builderOptions.replaceChildren();
+        catalog.items.forEach(item=>{
+          const label=document.createElement('label');label.className='builder-choice';
+          const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=builderState[builderService].has(item.id);checkbox.setAttribute('aria-label',item.label);
+          checkbox.addEventListener('change',()=>{if(checkbox.checked)builderState[builderService].add(item.id);else builderState[builderService].delete(item.id);updateBuilderSummary();});
+          const words=document.createElement('span');words.className='builder-text';
+          const title=document.createElement('strong');title.textContent=item.label;
+          const detail=document.createElement('small');detail.textContent=item.detail;
+          words.append(title,detail);
+          const cost=document.createElement('span');cost.className='builder-cost';cost.textContent='+$'+item.price;
+          label.append(checkbox,words,cost);builderOptions.appendChild(label);
+        });
+        updateBuilderSummary();
+      }
+      builderServiceInputs.forEach(input=>input.addEventListener('change',()=>{if(input.checked){builderService=input.value;renderBuilder();}}));
+      document.querySelector('#builder-request').addEventListener('click',()=>{
+        const{catalog,chosen,total}=builderSelection();
+        openInquiry();inquirySelect.value='Custom package request';
+        inquiryForm.elements['details'].value='Custom '+catalog.title+' package\n\nIncluded: '+catalog.baseName+'\nExtras: '+(chosen.length?chosen.map(x=>x.label).join(', '):'None')+'\nEstimated starting price: $'+total+'\n\nAbout my business and project:\n';
+      });
+      renderBuilder();
       document.querySelectorAll('.package-card a[href^="mailto:"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openInquiry(a.closest('.package-card').querySelector('h3').textContent.trim());}));
       document.querySelectorAll('.nav-cta,.contact-panel .pill').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openInquiry();}));
       inquiryDialog.querySelector('.inquiry-close').addEventListener('click',()=>inquiryDialog.close());
