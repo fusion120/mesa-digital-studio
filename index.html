@@ -291,7 +291,7 @@
       menuButton.addEventListener('click', () => { const open = mobileMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)); });
       mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuButton.setAttribute('aria-expanded','false'); }));
       const previewDialog=document.querySelector('#preview-dialog');
-      const previewFrame=document.querySelector('#preview-frame');
+      let previewFrame=document.querySelector('#preview-frame');
       const previewTitle=document.querySelector('#preview-title');
       const previewAddress=document.querySelector('#preview-address');
       const previewBase=`<meta name="viewport" content="width=device-width, initial-scale=1"><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif}button,a{cursor:pointer}a{text-decoration:none;color:inherit}</style>`;
@@ -300,7 +300,15 @@
       function openConcept(kind){
         previewTitle.textContent=kind==='barber'?'The Crown Studio · Website concept':'Prime Detail Co. · Advertising concepts';
         previewAddress.textContent=kind==='barber'?'preview.local/the-crown-studio':'preview.local/prime-detail-campaign';
-        previewFrame.srcdoc=kind==='barber'?barberConcept:adsConcept;
+        // A fresh browsing context avoids stale iframe layout when quickly
+        // switching between two previews in mobile browsers.
+        const freshFrame=document.createElement('iframe');
+        freshFrame.className='preview-frame';freshFrame.id='preview-frame';
+        freshFrame.title='Scrollable concept preview';
+        freshFrame.setAttribute('sandbox','allow-scripts');
+        freshFrame.srcdoc=kind==='barber'?barberConcept:adsConcept;
+        previewFrame.replaceWith(freshFrame);
+        previewFrame=freshFrame;
         previewDialog.showModal();
       }
       document.querySelectorAll('.projects .project').forEach((card,index)=>{
@@ -315,7 +323,6 @@
       });
       previewDialog.querySelector('.preview-close').addEventListener('click',()=>previewDialog.close());
       previewDialog.addEventListener('click',e=>{if(e.target===previewDialog)previewDialog.close();});
-      previewDialog.addEventListener('close',()=>{previewFrame.srcdoc='';});
       const inquiryDialog=document.querySelector('#inquiry-dialog');
       const inquiryForm=document.querySelector('#inquiry-form');
       const inquiryStatus=document.querySelector('#inquiry-status');
